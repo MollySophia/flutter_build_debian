@@ -352,22 +352,25 @@ Icon=${appExecutableName}
         desktop = desktop.replaceFirst(
             RegExp(r'Version.*\n'), 'Version=${debianControl.version}\n');
 
-        final String execPath = path.join(
-          Vars.pathToFinalAppLocation.replaceFirst(
-            Vars.newDebPackageDirPath,
-            "",
-          ),
-          package,
-          appExecutableName,
-        );
+        // final String execPath = path.join(
+        //   Vars.pathToFinalAppLocation.replaceFirst(
+        //     Vars.newDebPackageDirPath,
+        //     "",
+        //   ),
+        //   package,
+        //   appExecutableName,
+        // );
         if (!desktop.endsWith("\n")) {
           desktop += "\n";
         }
 
         final fieldCodes = formatFieldCodes();
-        desktop +=
-            fieldCodes == "" ? "Exec=$execPath" : "Exec=$execPath $fieldCodes";
-        desktop += "\nTryExec=$execPath";
+        // desktop +=
+        //     fieldCodes == "" ? "Exec=$execPath" : "Exec=$execPath $fieldCodes";
+        // desktop += "\nTryExec=$execPath";
+        desktop += "Exec=$appExecutableName";
+        // desktop += "\nTryExec=$appExecutableName";
+        print(desktop);
         desktopFileName = fileName;
       }
     }
